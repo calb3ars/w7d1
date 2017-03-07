@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { allTodos, allSteps } from './reducers/selectors.js';
+import Root from './components/root';
+import configureStore from './store/store.js';
 
-class Root extends React.Component {
-  render() {
-    return (
-      <h1>Todos App</h1>
-    )
-  }
-}
+let store = configureStore();
 
 document.addEventListener('DOMContentLoaded', () => {
   let rootEl = document.getElementById('content');
-  ReactDOM.render(<Root />, rootEl);
+  ReactDOM.render(<Root store={ store } />, rootEl);
 })
+
+window.store = store;
